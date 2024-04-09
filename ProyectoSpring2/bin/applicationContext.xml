@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd
+">
+
+<context:property-placeholder location="classpath:datos.videoclub"/>
+
+<!-- creación de la dependencia -->
+<bean id="misPrivilegios" class="VideoClub.Privilegios"></bean>
+
+<bean id="miUsuarioPremium" class="VideoClub.UsuarioPremium">
+	<property name="priv" ref="misPrivilegios"></property>
+	<property name="nombreEmpresa" value="${nombreEmpresa}"></property>
+	<property name="email" value="usuariopremium@eviden.com"></property>
+	<property name="nombreUsuario" value="Juan1234"></property>
+
+</bean>
+
+<bean id="miUsuarioMedio" class="VideoClub.UsuarioMedio">
+	<property name="priv" ref="misPrivilegios"></property>
+	<property name="email" value="usuariomedio@eviden.com"></property>
+	<property name="nombreUsuario" value="Eider1234"></property>
+	
+</bean>
+
+<bean id="miUsuarioEstandar" class="VideoClub.UsuarioEstandar">
+	<property name="priv" ref="misPrivilegios"></property>
+	<property name="nombreEmpresa" value="${nombreEmpresa}"></property>
+	<property name="email" value="usuarioestandar@eviden.com"></property>
+	<property name="nombreUsuario" value="Amara1234"></property>
+
+</bean>
+
+
+</beans>
